@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameAddict</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <header>
+        <h1>GameAddict: Carro de Compras</h1>
+    </header>
+    <main>
+        <section id="create" class="container">
+            <h2>Carro de compra</h2>
+            <form action="" id="add-game">
+                <label id="label" for="game">Nombre del juego:</label>
+                <input id="game" type="text" name="game" required>
+                <label for="price">Precio:</label>
+                <input id="price" type="text" name="price" required>
+                <button id="btn" type="submit">Agregar al carrito!</button>
+            </form>
+        </section>
+        <section id="games" class="container">
+            <h2>Listado de juegos:</h2>
+            <div id="games"></div>
+            <div id="total">Total: $0.00</div>
+        </section>
+    </main>
     <script src="index.js"></script>
 </body>
 </html>
