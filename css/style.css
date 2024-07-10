@@ -115,3 +115,7 @@ button:hover {
 #create h2 {
     text-align: center;
 }
+
+.card{
+    margin-right: 10px;
+}

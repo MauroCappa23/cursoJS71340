@@ -35,14 +35,14 @@ while (option != 0){
     }
 }*/
 
-const games_form = document.querySelector('#add-game');
+//const games_form = document.querySelector('#add-game');
 const games_in = document.querySelector('#games');
 const total_container = document.querySelector('#total');
 
-/*let games = JSON.parse(localStorage.getItem('games')) == null
+let games = JSON.parse(localStorage.getItem('games')) == null
 ? localStorage.setItem('games', JSON.stringify([]))
-: JSON.parse(localStorage.getItem('games'));*/
-let games = JSON.parse(localStorage.getItem('games')) || [];
+: JSON.parse(localStorage.getItem('games'));
+games = JSON.parse(localStorage.getItem('games')) || [];
 
 const createNewGame = (game) => {
     const old_games = JSON.parse(localStorage.getItem('games')) || [];
@@ -71,6 +71,16 @@ const appendGames = () => {
     total += parseFloat(game.price);
     document.getElementById(`btn-${index}`).addEventListener('click', () => {
         deleteGame(index);
+        Toastify({
+            text: "Juego eliminado con exito",
+            className: "info",
+            style: {
+              background: "red",
+              textAlign: "center",
+            },
+            gravity: "bottom",
+            duration: 1000,
+          }).showToast();
       });
     });
     total_container.textContent = `Total: $${total.toFixed(2)}`;
@@ -83,17 +93,32 @@ const appendGames = () => {
     appendGames();
   }
 
+  const loadGames = async () => {
+    try {
+        const response = await fetch('items.json');
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        const data = await response.json();
+        data.forEach(game => createNewGame(game));
+        appendGames();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+loadGames();
 
-games_form.addEventListener('submit', (e) => {
+/*games_form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const task = {
+  const game = {
     description: e.target[0].value,
     price: e.target[1].value,
   };
 
-  createNewGame(task);
+  createNewGame(game);
   appendGames();
   games_form.reset();
 });
 
-appendGames();
+appendGames();*/
+
