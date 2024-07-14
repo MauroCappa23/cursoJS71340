@@ -36,32 +36,39 @@ while (option != 0){
 }*/
 
 //const games_form = document.querySelector('#add-game');
-const games_in = document.querySelector('#games');
-const total_container = document.querySelector('#total');
+const games_in = document.querySelector("#games");
+const total_container = document.querySelector("#total");
+const btn = document.querySelector(".btn-add");
 
-let games = JSON.parse(localStorage.getItem('games')) == null
+/*let games = JSON.parse(localStorage.getItem('games')) == null
 ? localStorage.setItem('games', JSON.stringify([]))
 : JSON.parse(localStorage.getItem('games'));
 games = JSON.parse(localStorage.getItem('games')) || [];
 
-const createNewGame = (game) => {
+/*const createNewGame = (game) => {
     const old_games = JSON.parse(localStorage.getItem('games')) || [];
     old_games.push(game);
     localStorage.setItem('games', JSON.stringify(old_games));;
-}
+}*/
+
+const createNewGame = (game) => {
+  const oldGames = JSON.parse(localStorage.getItem("games")) || [];
+  oldGames.push(game);
+  localStorage.setItem("games", JSON.stringify(oldGames));
+};
 
 const appendGames = () => {
-    games_in.innerHTML = '';
-    const storedGames = JSON.parse(localStorage.getItem('games')) || [];
-    let total = 0;
-    storedGames.forEach((game, index) => {
-      const game_container = document.createElement('article');
-      game_container.className = 'game';
-      game_container.id = `game-${index}`;
+  games_in.innerHTML = "";
+  const storedGames = JSON.parse(localStorage.getItem("games")) || [];
+  let total = 0;
+  storedGames.forEach((game, index) => {
+    const game_container = document.createElement("article");
+    game_container.className = "game";
+    game_container.id = `game-${index}`;
 
     game_container.innerHTML = `
       <div>
-        <h3>${game.description}</h3>
+        <h3>${game.name}</h3>
         <p>$${game.price}</p>
       </div>
       <button id="btn-${index}" class="btn-delete" type="button">Eliminar</button>
@@ -69,44 +76,98 @@ const appendGames = () => {
 
     games_in.appendChild(game_container);
     total += parseFloat(game.price);
-    document.getElementById(`btn-${index}`).addEventListener('click', () => {
-        deleteGame(index);
-        Toastify({
-            text: "Juego eliminado con exito",
-            className: "info",
-            style: {
-              background: "red",
-              textAlign: "center",
-            },
-            gravity: "bottom",
-            duration: 1000,
-          }).showToast();
-      });
+    document.getElementById(`btn-${index}`).addEventListener("click", () => {
+      deleteGame(index);
+      Toastify({
+        text: "Juego eliminado con exito",
+        className: "info",
+        style: {
+          background: "red",
+          textAlign: "center",
+        },
+        gravity: "bottom",
+        duration: 1000,
+      }).showToast();
+    });
+  });
+  total_container.textContent = `Total: $${total.toFixed(2)}`;
+};
+/*const appendGames = () => {
+    const storedGames = JSON.parse(localStorage.getItem('games')) || [];
+    let total = 0;
+    storedGames.forEach((game) => {
+        total += parseFloat(game.price);
     });
     total_container.textContent = `Total: $${total.toFixed(2)}`;
-  };
-
-  const deleteGame = (index) => {
-    let storedGames = JSON.parse(localStorage.getItem('games')) || [];
-    storedGames.splice(index, 1);
-    localStorage.setItem('games', JSON.stringify(storedGames));
-    appendGames();
-  }
-
-  const loadGames = async () => {
-    try {
-        const response = await fetch('items.json');
-        if (!response.ok) {
-            throw new Error('Error al cargar el archivo JSON');
-        }
-        const data = await response.json();
-        data.forEach(game => createNewGame(game));
-        appendGames();
-    } catch (error) {
-        console.error('Error:', error);
-    }
 }
-loadGames();
+
+       /* games.forEach((game) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+              <h3>${game.description}</h3>
+              <p>$${parseFloat(game.price).toFixed(2)}</p>
+              <button class="btn-add" data-id="${game.id}" data-description="${game.description}" data-price="${game.price}">Agregar al carrito</button>
+          `;
+          gamesContainer.appendChild(card);
+      })*/
+const loadGameInfo = (id) => {
+  return fetch("./items.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al cargar el archivo JSON");
+      }
+      return response.json();
+    })
+    .then((games) => {
+      return games.find((game) => game.id == id);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+document.querySelectorAll(".btn-add").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    //const card = e.target.closest(".card");
+    const gameId = e.target.getAttribute("#data-id");
+    loadGameInfo(gameId).then((game) => {
+      if (game) {
+        createNewGame(game);
+        appendGames();
+        /* games.forEach((item) => {
+                createNewGame(item);
+                appendGames()
+              })
+            });
+           
+            appendGames();*/
+      }
+      Toastify({
+        text: "Juego agregado al carrito",
+        className: "info",
+        style: {
+          background: "green",
+          textAlign: "center",
+        },
+        gravity: "bottom",
+        duration: 1000,
+      }).showToast();
+    });
+  });
+});
+
+const deleteGame = (index) => {
+  let storedGames = JSON.parse(localStorage.getItem("games")) || [];
+  storedGames.splice(index, 1);
+  localStorage.setItem("games", JSON.stringify(storedGames));
+  appendGames();
+};
+
+/*fetch("Users/abaro/Desktop/CursoProgramacion/JS_Coder/PrimeraPreEntrega/items.json")
+  .then((res) => res.json)
+  .then((games) => console.log(games));*/
+
+appendGames();
 
 /*games_form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -121,4 +182,3 @@ loadGames();
 });
 
 appendGames();*/
-
