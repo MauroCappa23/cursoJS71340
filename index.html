@@ -1,72 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameAddict</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <header>
-        <h1>GameAddict: Carro de Compras</h1>
+      <h1>GameAddict: Carro de Compras</h1>
     </header>
     <main>
-        <section id="create" class="container">
-            <h2>Carro de compra</h2>
-            <form action="" id="add-game">
-                <label id="label" for="game">Nombre del juego:</label>
-                <input id="game" type="text" name="game" required>
-                <label for="price">Precio:</label>
-                <input id="price" type="text" name="price" required>
-                <button id="btn" type="submit">Agregar al carrito!</button>
-            </form>
+      <section class="section-principal">
+        <section>
+          <div class="row">
+            <div class="card" style="width: 18rem">
+              <img src="./img/Fc24.jpg" class="card-img-top" alt="FC24" />
+              <div class="col" class="card-body" data-id="1">
+                <h5 class="card-title">FC 24</h5>
+                <p class="card-text">$50</p>
+                <button class="btn-add btn btn-primary" data-id="1">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/spider-man-2-blog-1697207041401.jpg"
+                class="card-img-top"
+                alt="Spiderman 2"
+              />
+              <div class="col" class="card-body" data-id="2">
+                <h5 class="card-title">Spiderman 2</h5>
+                <p class="card-text">$60.99</p>
+                <button class="btn-add btn btn-primary" data-id="2">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/Rise of the ronin.jpg"
+                class="card-img-top"
+                alt="Rise of the Ronin"
+              />
+              <div class="col" class="card-body" data-id="3">
+                <h5 class="card-title">Rise of the Ronin</h5>
+                <p class="card-text">$55</p>
+                <button class="btn-add btn btn-primary" data-id="3">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/BO6_LP-meta_image.jpg"
+                class="card-img-top"
+                alt="COD Black Ops 6"
+              />
+              <div class="col" class="card-body" data-id="4">
+                <h5 class="card-title">Call of Duty: Black Ops 6</h5>
+                <p class="card-text">$59.99</p>
+                <button class="btn-add btn btn-primary" data-id="4">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/elder ring.jpg"
+                class="card-img-top"
+                alt="Elder Ring"
+              />
+              <div class="col" class="card-body" data-id="5">
+                <h5 class="card-title">Elder Ring</h5>
+                <p class="card-text">$69.99</p>
+                <button class="btn-add btn btn-primary" data-id="5">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/dragons dogma 2.jpg"
+                class="card-img-top"
+                alt="Dragons Dogma 2"
+              />
+              <div class="col" class="card-body" data-id="6">
+                <h5 class="card-title">Dragons Dogma 2</h5>
+                <p class="card-text">$45.99</p>
+                <button class="btn-add btn btn-primary" data-id="6">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/3GEdKTGktTBsZ8Sj9yIWnr2f.jpg"
+                class="card-img-top"
+                alt="Gran Turismo 7"
+              />
+              <div class="col" class="card-body" data-id="7">
+                <h5 class="card-title">Gran Turismo 7</h5>
+                <p class="card-text">$35.99</p>
+                <button class="btn-add btn btn-primary" data-id="7">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/tha last of us 2.png"
+                class="card-img-top"
+                alt="The Last of US 2"
+              />
+              <div class="col" class="card-body" data-id="8">
+                <h5 class="card-title">The Last Of Us 2</h5>
+                <p class="card-text">$29.99</p>
+                <button class="btn-add btn btn-primary" data-id="8">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/Assassin's_Creed_Shadows_cover.png"
+                class="card-img-top"
+                alt="Assassins Creed Shadows"
+              />
+              <div class="col" class="card-body" data-id="9">
+                <h5 class="card-title">Assassins Creed Shadows</h5>
+                <p class="card-text">$69.99</p>
+                <button class="btn-add btn btn-primary" data-id="9">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img
+                src="./img/red dead redemption2.jpg"
+                class="card-img-top"
+                alt="Red Dead Redemption 2"
+              />
+              <div class="col" class="card-body" data-id="10">
+                <h5 class="card-title">Red Dead Redemption 2</h5>
+                <p class="card-text">$19.99</p>
+                <button class="btn-add btn btn-primary" data-id="10">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
         <section id="games" class="container">
-            <h2>Listado de juegos:</h2>
-            <div id="games"></div>
-            <div id="total">Total: $0.00</div>
+          <h2>Listado de juegos:</h2>
+          <div id="games"></div>
+          <div id="total">Total: $0.00</div>
         </section>
-        <section>
-            <div class="row">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="col" class="card-body" data-id="1">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn-add btn btn-primary">Go somewhere</button>
-                    </div>
-                  </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                    <div class="col" class="card-body"  data-id="2">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn-add btn btn-primary">Go somewhere</button>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="col" class="card-body" data-id="3">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn-add btn btn-primary">Go somewhere</button>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="col" class="card-body" data-id="4">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <button class="btn-add btn btn-primary">Go somewhere</button>
-                    </div>
-                  </div>    
-            </div>
-        </section>
+      </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
