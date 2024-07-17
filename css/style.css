@@ -123,3 +123,18 @@ button:hover {
 .section-principal{
     display: flex;
 }
+
+.section-secundary{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    height: 18rem;
+    object-fit: cover; 
+  }
+  
+.custom-container{
+    width: 70%;
+    /*margin: 0 auto;*/
+}
